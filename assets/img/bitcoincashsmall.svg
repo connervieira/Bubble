@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   shape-rendering="geometricPrecision"
+   text-rendering="geometricPrecision"
+   image-rendering="optimizeQuality"
+   fill-rule="evenodd"
+   clip-rule="evenodd"
+   viewBox="0 0 1282.27 801.91"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="bitcoincashsmall.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <title
+     id="title814">BitcoinCash Logo</title>
+  <metadata
+     id="metadata14">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>BitcoinCash Logo</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Conner Vieira</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-sa/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs12" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1702"
+     inkscape:window-height="1352"
+     id="namedview10"
+     showgrid="false"
+     inkscape:zoom="0.35355339"
+     inkscape:cx="883.25951"
+     inkscape:cy="192.65077"
+     inkscape:window-x="1726"
+     inkscape:window-y="39"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg8" />
+  <path
+     fill="#fff"
+     fill-rule="nonzero"
+     d="M0 0h1282.27v801.47L0 801.48z"
+     id="path2"
+     style="fill:#ffffff;fill-opacity:0" />
+  <path
+     d="M 0,0 H 366.24 C 302.45,45.13 250.81,105.01 214.8,174.88 c -36.02,69.86 -54.68,147.1 -54.68,225.64 0,78.54 18.66,156.22 54.68,226.08 36.02,69.87 87.65,129.75 151.44,174.87 H 0 V -0.01 Z M 640.92,0 C 536.34,0 436.1,42.09 361.9,117.16 288.13,192.23 246.47,294.21 246.47,400.52 c 0,106.31 41.66,208.29 115.43,283.36 73.77,75.07 174.44,117.16 279.02,117.16 104.57,0 204.81,-42.09 279.02,-117.16 73.77,-75.07 115.43,-177.04 115.43,-283.36 0,-106.31 -41.66,-208.29 -115.43,-283.36 C 846.17,42.09 745.5,0 640.92,0 Z m 641.35,0 H 916.03 c 130.718,98.882628 204.7528,250.16936 206.11,400.96 0,78.54 -18.66,156.21 -54.67,226.08 -36.02,69.86 -87.65,129.74 -151.44,174.87 h 366.24 z"
+     id="path4"
+     style="fill:#0add85;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cccscccccscssscsssccccccc" />
+  <path
+     d="m 770.8949,251.52064 c -17.79,-50.77 -66.39,-56.85 -123.24,-47.73 l -17.79,-72.04 -43.39,10.85 17.36,70.3 c -11.28,3.04 -23,6.07 -34.28,9.11 l -17.36,-70.73 -43.39,10.85 17.79,72.03 c -9.11,2.6 -18.66,5.21 -27.34,7.38 v -0.43 l -59.88,15.19 11.72,46.87 c 0,0 31.68,-8.68 31.24,-7.81 17.35,-4.34 25.6,4.34 29.51,13.02 l 20.39,82.45 c 1.74,-0.43 3.04,-0.87 4.77,-0.87 l -4.77,1.3 28.2,115.43 c 0.43,5.64 -0.43,15.62 -12.58,18.66 0.87,0.43 -31.68,7.81 -31.68,7.81 l 4.34,54.67 56.41,-14.32 c 10.42,-2.6 20.83,-5.2 30.81,-7.38 l 17.79,72.9 43.39,-10.85 -17.79,-72.47 c 12.15,-2.6 23.43,-5.64 34.71,-8.24 l 17.79,72.03 43.39,-10.85 -17.79,-72.9 c 71.6,-22.56 118.03,-54.24 107.18,-125.41 -8.68,-57.28 -40.79,-75.5 -84.62,-75.07 22.13,-19.53 32.11,-46.43 19.09,-83.75 z m -22.13,171.4 c 13.45,54.68 -80.28,71.6 -109.35,78.98 l -23.87,-96.77 c 29.51,-6.94 119.33,-38.62 133.22,17.79 z m -53.37,-131.05 c 12.15,49.47 -65.96,63.35 -90.26,69.43 l -21.7,-87.65 c 24.3,-6.51 98.93,-33.85 111.95,18.22 z"
+     id="path6"
+     inkscape:connector-curvature="0"
+     style="fill:#ffffff;fill-rule:nonzero" />
+</svg>

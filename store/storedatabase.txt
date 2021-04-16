@@ -1,0 +1,1 @@
+a:1:{s:8:"testuser";a:1:{s:6:"store1";a:1:{s:10:"product1ID";a:2:{s:4:"txid";i:4353921;s:9:"purchased";b:1;}}}}
