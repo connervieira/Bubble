@@ -73,9 +73,10 @@ if ($username != $admin_account) { // Check to make sure the current user is an 
 
 
 
+                            // Display a form that the user can use to edit configuration settings.
                             echo "<form style='width:100%;text-align:center;color:white;' method='POST'>";
                             echo "    <p style='font-size:30px;color:inherit;'>Store Page</p>";
-                            echo "    <label for='store_title'>Store ID: </label><input type='text' name='store_id' style='color:gray;' value='" . $store_id . "' readonly><br>";
+                            echo "    <label for='store_title'>Store ID: </label><input type='text' name='store_id' style='color:gray;' value='" . $store_id . "' readonly><br>"; // This field doesn't effect anything, and is simply present to show the user their current store ID. If they use inspect element to change this, it will effect nothing when the form is submitted.
                             echo "    <label for='store_title'>Store Title: </label><input type='text' name='store_title' value='" . $store_title . "'><br>";
                             echo "    <label for='store_description'>Store Description: </label><input type='text' name='store_description' value='" . $store_description . "'><br>";
                             echo "    <label for='store_tagline'>Store Tagline: </label><input type='text' name='store_tagline' value='" . $store_tagline . "'><br>";

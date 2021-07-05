@@ -11,6 +11,9 @@ $panic_switch = false; // This setting disables all of Bubble's pages. This is u
 
 $store_id = "store1"; // This is the ID if your store. This is never seen by the user and should be left as the default value of 'store1'. You should only change this if you are prepared to make extensive changes to Bubble and it's payment system.
 
+
+
+
 $configurationArray = unserialize(file_get_contents('./configurationdatabase.txt')); // Load the configuration database from disk.
 
 // Functional settings

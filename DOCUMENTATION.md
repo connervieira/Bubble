@@ -41,7 +41,7 @@ This installation process assumes you are using a Raspberry Pi or another Debian
     - If you open the Purchase page for a given product, and the `Purchase ID` changes every time you refresh the page, this is most likely the issue. It is critical that the `Purchase ID` remains the same every time the page is loaded for a given user and product. This is what ensures the user can close the webpage and come back later and still have their transaction approved.
 3. Make sure that the store database (`store/storedatabase.txt`), products database (`store/productsdatabase.txt`), and authentication database (`dropauth/accountDatabase.txt`) only contain `a:0:{}`, and nothing else. This is what an empty serialized array should look like. If the file is empty, or contains other characters, Bubble may not be able to write to it properly.
 4. Sign up for an account on your Bubble instance with the username 'admin'. This is the default admin account username.
-5. After signing into your admin account, open the main page of your Bubble instance, and click the "Configuration" button at the top of the page to be brought to 'bubble/store/configure.php'. From here, you'll be able to configure your Bubble instance. The following settings should be changed. Other setting changes are optional.
+5. After signing into your admin account, open the main page of your Bubble instance, and click the "Configuration" button at the top of the page to be brought to 'bubble/store/configure.php'. From here, you'll be able to configure your Bubble instance. You can learn what all of these settings do in the CONFIGURATION.md document. The following settings should be changed. Other setting changes are optional.
     - `Store Title`
     - `Store Tagline`
     - `Store Description`
