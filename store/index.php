@@ -7,7 +7,7 @@ include "./authentication.php"; // Include the authentication system
 
 $storeArray = unserialize(file_get_contents('./storedatabase.txt')); // Load the store database (Who owns what, and their transaction IDs)
 
-$selected = 0; // Placeholder variable used to keep track of what color we are currently on while cycling through them.
+$selected = 0; // Placeholder variable used to keep track of what color we are currently on while cycling through them on the product tiles.
 ?>
 <!DOCTYPE html>
 <html lang="en" style="background:<?php echo $background_gradient_bottom; ?>;">
@@ -28,8 +28,22 @@ $selected = 0; // Placeholder variable used to keep track of what color we are c
 		    <div class="container" style="padding-top:100px;">
 	 	        <main>
                     <?php
+                    // Depending on the current Bubble configuration, display a button to show an 'About' page.
                     if ($display_about_page == true) {
                         echo '<a class="btn btn-light" role="button" href="about.php" style="margin:8px;padding:9px;background-color:#888888;border-color:#333333;border-radius:10px;">About</a>';
+                    }
+
+                    // Depending on whether a user is currently signed in, display either a "Sign In" or "Sign Out" button.
+                    if ($username == "" || $username == null) {
+                        echo '<a class="btn btn-light" role="button" href="../dropauth/signin.php" style="margin:8px;padding:9px;background-color:#888888;border-color:#333333;border-radius:10px;">Sign In</a>';
+                    } else {
+                        echo '<a class="btn btn-light" role="button" href="../dropauth/signout.php" style="margin:8px;padding:9px;background-color:#888888;border-color:#333333;border-radius:10px;">Sign Out</a>';
+                    }
+
+                    // Only show the admin control panel buttons if the current user is an admin user according to the current Bubble configuration.
+                    if ($username == $admin_account) {
+                        echo '<a class="btn btn-light" role="button" href="editproducts.php" style="margin:8px;padding:9px;background-color:#888888;border-color:#333333;border-radius:10px;">Edit Products</a>';
+                        echo '<a class="btn btn-light" role="button" href="configure.php" style="margin:8px;padding:9px;background-color:#888888;border-color:#333333;border-radius:10px;">Configuration</a>';
                     }
                     ?>
 				    <div class="intro">
@@ -42,6 +56,7 @@ $selected = 0; // Placeholder variable used to keep track of what color we are c
 
 
                     <?php
+                    // Display "BitcoinCash Accepted" badge depending on the current Bubble configuration.
                     if ($display_bitcoincash_accepted_icon == 3) {
                         echo '
                         <div style="text-align:center;">

@@ -34,3 +34,15 @@
 - Added `analytics.php` script to `bubble/store/` as a way for developers to import their analytics system automatically into all of the Bubble pages a user would access. This script is loaded in the `<head>` tag of all user pages, so it can be used to import analytics scripts, or run an in house analytics system. By default, this script is empty.
 - Added a short example of what `bubble/store/authentication.php` should look like in the comments of the script.
 - Added `FAQ.md` document that contains some frequently asked questions and their answers.
+
+### Version 2.0
+
+- Replaced the default authentication system with DropAuth, a drop in authentication system.
+    - It remains easy for this system to be replaced with an existing authentication system.
+- Replaced the product database system with a file based system that allows for better extensibility.
+    - Added the ability to edit existing products with a web based GUI.
+    - Added the ability to create new products with a web based GUI.
+    - Added the ability to delete existing products with a web based GUI.
+- Replaced the Bubble configuration system with a file based system that allows for better extensibility.
+    - Create a web based GUI to edit configuration information.
+    - Removed the "Panic Button" setting

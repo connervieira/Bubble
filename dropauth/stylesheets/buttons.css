@@ -1,0 +1,69 @@
+.redbutton {
+    background: #cc6666;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.orangebutton {
+    background: #dd8855;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.yellowbutton {
+    background: #eecc66;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.greenbutton {
+    background: #77bb77;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.bluebutton {
+    background: #66aaff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.purplebutton {
+    background: #6666bb;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.brownbutton {
+    background: #997755;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.graybutton {
+    background: #666666;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+.darkbutton {
+    background: #111111;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.lightbutton {
+    background: #dddddd;
+    color: #000000;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.disabledlightbutton {
+    background: #666666;
+    color: #999999;
+    padding: 20px;
+    border-radius: 5px;
+}

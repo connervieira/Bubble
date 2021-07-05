@@ -59,7 +59,7 @@ Bubble is designed with convenience and easy of use in mind. Settings and config
 
 ### Highly Configurable
 
-Bubble's configuration file, `store/config.php` allows plenty of customization without ever modifying the source code of other pages.
+Bubble's configuration system allows plenty of customization without ever modifying the source code of any pages. You can change the background colors of pages, the border radius of product tiles, and plenty more!
 
 ### Accessible
 
@@ -112,32 +112,33 @@ This installation process assumes you are using a Raspberry Pi or another Debian
 
 ### Configuration
 
-1. Replace `$username = "testuser"` in `bubble/store/authentication.php` with a system that sets the current user's username to the `$username` variable. Users who are not currently signed in (have an empty username) will be automatically redirected when accessing the Purchase page (based on criteria in `bubble/store/config.php`). While `$username` doesn't necessarily need to be a username, it does have to be a value unique to a user, like an ID number. The `store/authentication.php` script is imported to all other scripts, so that the current user can be obtained using the `$username` variable on any page.
-    - If this seems out of your comfort zone, consider using DropAuth, a pre-made authentication system that does just this, and should be compatible with Bubble.
-2. Make sure that the store database (`store/storedatabase.txt`) is writable. In other words, you should run `chmod 777 storedatabase.txt` to ensure it can be written to by the PHP scripts.
+1. Ensure the DropAuth folder at `bubble/dropauth` is writable to PHP. Alternatively, replace the DropAuth authentication in `bubble/store/authentication.php` with your own authentication system.
+    - `sudo chmod 777 bubble/dropauth/` will accomplish this, but will also allow other programs to write to the DropAuth folder.
+2. Make sure that the store database (`store/storedatabase.txt`), product database (`store/productsdatabase.txt`), and configuration database (`store/configurationdatabase.txt`) are all writable. In other words, you should run `sudo chmod 777 storedatabase.txt; sudo chmod 777 productsdatabase.txt; sudo chmod 777 configurationdatabase.txt` to ensure they can be written to by the PHP scripts. However, keep in mind that these commands will set permissions that allow any program to write to these databases, so ensure that you trust the system you are working with.
     - If you open the Purchase page for a given product, and the `Purchase ID` changes every time you refresh the page, this is most likely the issue. It is critical that the `Purchase ID` remains the same every time the page is loaded for a given user and product. This is what ensures the user can close the webpage and come back later and still have their transaction approved.
-3. Make sure that the store database (`storedatabase.txt`) only contains `a:0:{}`, and nothing else. This is what an empty serialized array should look like. If the file is empty, or contains other characters, Bubble may not be able to write to it properly.
-4. Configure the settings in `store/config.php`. The settings for all pages are contained in this file for convenience. Below is a list of settings you'll need to change before deploying Bubble. Other settings can be changed at your preference. All settings and their functions are described in comments within `store/config.php`.
-    - `store_title`
-    - `store_tagline`
-    - `store_description`
-    - `xPub`
-    - `login_page`
-    - `disclaimers`
-    - `support_email`
-5. Add the products you'd like to sell to `store/products.php`. This process is described in `store/products.php` itself.
-6. Determine what you want to happen when someone tries to access a product they've successfully purchased. To do this, edit `store/download.php` and edit the code accordingly. You'll find the functions that run when someone tries to download a product they've purchased at the very top of the script. For example, you might insert a short script that redirects the user to a download page, or shows them a product key they can use to access their download.
-7. Optionally, add your analytics system to `bubble/store/analytics.php`. This could be as simple as an `echo` statement containing the code required to load a script, or as complicated as creating your own in-house analytics system. It should be clarified that `analytics.php` itself offers no analytical functions. It's simply there to allow you to easily use analytics with Bubble. This script is run inside the `<head>` tag of all Bubble pages that a user would access, so it's the perfect place to add a script import, like in the following example:
+3. Make sure that the store database (`store/storedatabase.txt`), products database (`store/productsdatabase.txt`), and authentication database (`dropauth/accountDatabase.txt`) only contain `a:0:{}`, and nothing else. This is what an empty serialized array should look like. If the file is empty, or contains other characters, Bubble may not be able to write to it properly.
+4. Sign up for an account on your Bubble instance with the username 'admin'. This is the default admin account username.
+5. After signing into your admin account, open the main page of your Bubble instance, and click the "Configuration" button at the top of the page to be brought to 'bubble/store/configure.php'. From here, you'll be able to configure your Bubble instance. The following settings should be changed. Other setting changes are optional.
+    - `Store Title`
+    - `Store Tagline`
+    - `Store Description`
+    - `Extended Public Key`
+    - `Login Page`
+    - `Disclaimers`
+    - `Support Email`
+6. Configure the products you want to display in your Bubble store. Sign up for an account on your Bubble store's DropAuth page using the same username that you specified as your `$admin_account` earlier. After logging in to this account, you should see a button on the main Bubble store page titled 'Edit Products'. You can click this button to open a page that allows you to create, edit, and delete products.
+7. Determine what you want to happen when someone tries to access a product they've successfully purchased. To do this, edit `store/download.php` and edit the code accordingly. You'll find the functions that run when someone tries to download a product they've purchased at the very top of the script. For example, you might insert a short script that redirects the user to a download page, or shows them a product key they can use to access their download.
+8. Optionally, add your analytics system to `bubble/store/analytics.php`. This could be as simple as an `echo` statement containing the code required to load a script, or as complicated as creating your own in-house analytics system. It should be clarified that `analytics.php` itself offers no analytical functions. It's simply there to allow you to easily use analytics with Bubble. This script is run inside the `<head>` tag of all Bubble pages that a user would access, so it's the perfect place to add a script import, like in the following example:
     - `echo '<script async defer data-domain="server.com" src="/js/analyticsscript.js"></script>';`
 
 ### Testing
 
 A good first step in testing would be to load <http://localhost/bubble/store/failsafe.php>. This should indicate any glaring issues. If you don't see anything, then no issues were found. However, this **does not** mean for certain that everything is working. This script just runs some basic checks to detect common configuration problems.
 
-Bubble should now be fully functional. However, it's highly suggested that you test everything from start to finish to make sure that it all works how you are expecting it to. To do this, you may want to temporarily modify your product database to make one of the products extremely inexpensive (A few cents or so). Then, run through the system from start to finish to see if you successfully get your product.
+Bubble should now be fully functional. However, it's highly suggested that you test everything from start to finish to make sure that it all works how you are expecting it to. To do this, you may want to temporarily modify one of your products to make it extremely inexpensive (A few cents or so). Then, run through the system from start to finish to see if you successfully get your product.
 
 Provided that everything works as expected, you can revert the price back to normal, and proceed with the setup!
 
 ### Deploying
 
-At this point, you should be safe to deploy your Bubble instance. This step depends on your server configuration, but so long as you have a basic understanding of networking, you should have no problems here. Simply port forward your Apache server, or otherwise expose it to the internet so anyone can access it.
+At this point, you should be safe to deploy your Bubble instance. This step depends on your server configuration, but so long as you have a basic understanding of networking, you should have no problems here. Simply port forward your web server, or otherwise expose it to the internet so anyone can access it.

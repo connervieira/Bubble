@@ -1,0 +1,31 @@
+body {
+    padding: 5%;
+    background: #222222;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+i {
+    color: #bbbbbb;
+}
+
+
+.button {
+    background: #666666;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.error {
+    color: #ff6666;
+}
+
+.success {
+    color: #66ff66;
+}

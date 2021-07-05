@@ -23,7 +23,9 @@ if (file_exists("./config.php")) { // Find 'config.php' and import it
     exit();
 }
 
+$productsArray = unserialize(file_get_contents('./productsdatabase.txt'));
 
+/*
 // Product 1
 $productsArray[$store_id]["product1ID"]["name"] = "Product 1 Name";
 $productsArray[$store_id]["product1ID"]["price"] = 0.0001;
@@ -53,4 +55,7 @@ $productsArray[$store_id]["product3ID"]["alt"] = "Product 3 icon alt text";
 $productsArray[$store_id]["product3ID"]["link"] = "/product3.html";
 $productsArray[$store_id]["product3ID"]["action"] = "ActionInformation";
 $productsArray[$store_id]["product3ID"]["enabled"] = true;
+*/
+
+file_put_contents('./productsdatabase.txt', serialize($productsArray)); // Write array changes to disk
 ?>

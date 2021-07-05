@@ -93,7 +93,7 @@ class AppAutoload {
 	public function requireFile($fileIdentifier, $file) {
 		// use check via globals instead of require_once because it's faster, no context change (see Laravel autoloader)
 		if (empty($GLOBALS['__ekliptor_autoload_files'][$fileIdentifier])) {
-			require $file;
+			//require $file;
 			$GLOBALS['__ekliptor_autoload_files'][$fileIdentifier] = true;
 		}
 	}
