@@ -2,6 +2,15 @@
 
 This document contains everything you need to know to get Bubble up and running.
 
+## Quick Setup
+
+*Warning: This method of setup isn't tested, and is likely to not work. It is highly recommended that you complete the full setup explained in the 'Typical Installation and Setup' section*
+
+1. To quickly set up Bubble, copy Bubble's root directory into your Download's folder, such that it can be accessed at `~/Downloads/bubble`.
+2. Next, run this command. You may need to enter your root password several times.
+    - `sudo apt install apache2 php7.4 php7.4-gd; sudo a2enmod php7.4; mv ~/Downloads/bubble /var/www/html/; sudo chmod 777 /var/www/html/bubble/dropauth/ /var/www/html/bubble/store/storedatabase.txt /var/www/html/bubble/store/productsdatabase.txt /var/www/html/bubble/store/configurationdatabase.txt;`
+3. Finally, finish setting up Bubble using the GUI by starting at step 5 in the 'Configuration' section below
+
 ## Typical Installation and Setup
 
 To download and install to your webserver, use the following instructions. Please note that you should prevent users from accessing your website while configuring and setting up Bubble for security reasons. For sake of testing, you may want to leave your web server up on LAN, and simply block it's port on your router.
