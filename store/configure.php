@@ -13,12 +13,12 @@ if (file_exists("./config.php")) { // Find 'config.php' and import it
 } else if (file_exists("../config.php")) {
     include("../config.php");
 } else { // If the configuration script can't be found, throw an error and stop loading the page.
-    echo "<p style='margin:15%;color:red;'>Error: The configuration file (bubble/store/config.php) couldn't be located! This probably isn't a problem with your configuration, and is a bug with Bubble itself. You may want to contact V0LT over this issue: <a href='mailto:cvieira@v0lttech.com'>mailto:cvieira@v0lttech.com</a></p>";
+    echo "<p style='margin:15%;color:red;'>Error: The configuration file (bubble/store/config.php) couldn't be located! This probably isn't a problem with your configuration, and is a bug with Bubble itself. You may want to contact V0LT over this issue: <a href='mailto:cvieira@v0lttech.com'>cvieira@v0lttech.com</a></p>";
     exit();
 }
 
 if ($username != $admin_account) { // Check to make sure the current user is an admin before loading the page.
-    echo "<p>Error: You are not authorized to be here! If you do actually have permission to edit products, please ensure you are signed in with the correct account, as specified by <b>\$admin_account</b> in <b>bubble/store/config.php</b></p>"; // Display an error message to the user.
+    echo "<p>Error: You are not authorized to be here! If you do actually have permission to edit products, please ensure you are signed in with the correct account.</p>"; // Display an error message to the user.
     exit(); // Quit loading the page.
 }
 ?>
@@ -46,6 +46,18 @@ if ($username != $admin_account) { // Check to make sure the current user is an 
                         <?php
                             // Check to see if the form as been submitted by checking to see if "store_id" exists in the post data.
                             if ($_POST["store_id"] != null and $_POST["store_id"] != "") {
+                                // Run basic input validation to catch simple mistakes in submitted data. It should be made clear that this is not designed to prevent attackers from compromising Bubble in the even that someone gains access to the admin account.
+                                if (substr($_POST["background_gradient_top"], 0, 1) != "#") {
+                                    echo "<p style='color:#ff8888;'>Error: 'Background Gradient Top' should start with a '#' symbol, followed by 6 characters to create a hex color code.</p>";
+                                    exit();
+                                }
+                                if (substr($_POST["background_gradient_bottom"], 0, 1) != "#") {
+                                    echo "<p style='color:#ff8888;'>Error: 'Background Gradient Bottom' should start with a '#' symbol, followed by 6 characters to create a hex color code.</p>";
+                                    exit();
+                                }
+
+
+                                // Modify settings in the Configuration Array (which will later be saved to disk)
                                 $configurationArray[$store_id]["store_title"] = htmlspecialchars($_POST["store_title"], ENT_QUOTES); $store_title = htmlspecialchars($_POST["store_title"], ENT_QUOTES);
                                 $configurationArray[$store_id]["store_description"] = htmlspecialchars($_POST["store_description"], ENT_QUOTES); $store_description = htmlspecialchars($_POST["store_description"], ENT_QUOTES);
                                 $configurationArray[$store_id]["store_tagline"] = htmlspecialchars($_POST["store_tagline"], ENT_QUOTES); $store_tagline = htmlspecialchars($_POST["store_tagline"], ENT_QUOTES);

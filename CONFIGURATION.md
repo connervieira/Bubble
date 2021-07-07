@@ -3,6 +3,30 @@
 This document explains all of the configuration settings built into Bubble.
 
 
+## Product Settings
+
+Product settings are the settings defined in each product's information. This is the information you fill out when creating or editing products on the 'Edit Products' page.
+
+- Product ID
+    - A unique, unchangeable string that will be used to internally identify a product.
+- Product Name
+    - The human-readable name of a product. This is the name that will be shown in the shop.
+- Price
+    - The static price of a product in BitcoinCash. This value *does not* fluctuate with the conversion rates of BitcoinCash to USD.
+- Description
+    - This is a description of the product to be shown on the Store page.
+- Product Page
+    - This is a link to a webpage with more information about this product. This value will be supplied as the 'href' of an <a> tag.
+- Icon Link
+    - This is the icon that will be shown on the store page. This can be a locally hosted image, or an image from a third party. This value will be supplied as the 'src' of the image. Vector images (SVGs) are recommend for sake of efficiency and loading times, but any web-friendly image format will work.
+- Icon Alt Text
+    - This is the alt text of the product's icon. If this value is left empty, the alt text will default to 'Product Name icon', with 'Product Name' being replaced with the name value described above.
+- Action Information 
+    - This is a deliberately open ended variable, and is intended to be used by developers working on the 'bubble/store/download.php' page. Really anything you want can be stored in this variable. For example, you may use this variable to store the download URL of the product, or maybe a private key used to generate license keys. This variable isn't really required, but it may come in useful if you'd like to keep your 'bubble/store/download.php' file organized.
+- Enabled
+    - This value determines whether or not the product will appear on the Store page. If you'd like to temporarily disable a product on the Store page, set this to false. Please note that this does not prevent users from purchasing this product outright. It only stops it from appearing on the store page. If a user knows the product ID an manually enters it in the Purchase page URL, they can still purchase a disabled product.
+
+
 ## Standard Settings
 
 Standard settings are settings intended to be changed by the user. In other words, these are settings that can be changed using the Configuration page on Bubble.

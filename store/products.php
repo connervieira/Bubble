@@ -19,43 +19,9 @@ if (file_exists("./config.php")) { // Find 'config.php' and import it
 } else if (file_exists("../config.php")) {
     include("../config.php");
 } else {
-    echo "<p style='margin:15%;color:red;'>Error: The configuration file (bubble/store/config.php) couldn't be located! This probably isn't a problem with your configuration, and is a bug with Bubble itself. You may want to contact V0LT over this issue: <a href='mailto:cvieira@v0lttech.com'>mailto:cvieira@v0lttech.com</a></p>";
+    echo "<p style='margin:15%;color:red;'>Error: The configuration file (bubble/store/config.php) couldn't be located! This probably isn't a problem with your configuration, and is a bug with Bubble itself. You may want to contact V0LT over this issue: <a href='mailto:cvieira@v0lttech.com'>cvieira@v0lttech.com</a></p>";
     exit();
 }
 
 $productsArray = unserialize(file_get_contents('./productsdatabase.txt'));
-
-/*
-// Product 1
-$productsArray[$store_id]["product1ID"]["name"] = "Product 1 Name";
-$productsArray[$store_id]["product1ID"]["price"] = 0.0001;
-$productsArray[$store_id]["product1ID"]["description"] = "This is a description of Product 1.";
-$productsArray[$store_id]["product1ID"]["icon"] = "/bubble/assets/img/icons/icon1.svg";
-$productsArray[$store_id]["product1ID"]["alt"] = "Product 1 icon alt text";
-$productsArray[$store_id]["product1ID"]["link"] = "/product1.html";
-$productsArray[$store_id]["product1ID"]["action"] = "ActionInformation";
-$productsArray[$store_id]["product1ID"]["enabled"] = true;
-
-// Product 2
-$productsArray[$store_id]["product2ID"]["name"] = "Product 2 Name";
-$productsArray[$store_id]["product2ID"]["price"] = 0.01;
-$productsArray[$store_id]["product2ID"]["description"] = "This is a description of Product 2.";
-$productsArray[$store_id]["product2ID"]["icon"] = "/bubble/assets/img/icons/icon2.svg";
-$productsArray[$store_id]["product2ID"]["alt"] = "Product 2 icon alt text";
-$productsArray[$store_id]["product2ID"]["link"] = "/product2.html";
-$productsArray[$store_id]["product2ID"]["action"] = "ActionInformation";
-$productsArray[$store_id]["product2ID"]["enabled"] = true;
-
-// Product 3
-$productsArray[$store_id]["product3ID"]["name"] = "Product 3 Name";
-$productsArray[$store_id]["product3ID"]["price"] = 0.01;
-$productsArray[$store_id]["product3ID"]["description"] = "This is a description of Product 3.";
-$productsArray[$store_id]["product3ID"]["icon"] = "/bubble/assets/img/icons/icon3.svg";
-$productsArray[$store_id]["product3ID"]["alt"] = "Product 3 icon alt text";
-$productsArray[$store_id]["product3ID"]["link"] = "/product3.html";
-$productsArray[$store_id]["product3ID"]["action"] = "ActionInformation";
-$productsArray[$store_id]["product3ID"]["enabled"] = true;
-*/
-
-file_put_contents('./productsdatabase.txt', serialize($productsArray)); // Write array changes to disk
 ?>
