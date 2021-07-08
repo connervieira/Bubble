@@ -111,7 +111,9 @@ $selected = 0; // Placeholder variable used to keep track of what color we are c
                                     } else {
                                         echo '<h2 style="padding:0px;margin-top:10px;margin-bottom:20px;font-size:1rem;color:#ffff;">' . $element["price"] . ' BCH</h2>'; // Display this product's price
                                     }
-                                    echo '<a class="btn btn-primary" role="button" href="' . $element["link"] . '" style="background-color:#444444;border-color:#eeeeee">More Info</a>'; // Provide a link to more information about this product.
+                                    if ($element["link"] != null and $element["link"] != "") { // Only show the 'More Info' button if a link exists for this product. Otherwise, show nothing at all.
+                                        echo '<a class="btn btn-primary" role="button" href="' . $element["link"] . '" style="background-color:#444444;border-color:#eeeeee">More Info</a>'; // Provide a link to more information about this product.
+                                    }
                                     echo '<br><br>';
 
 
