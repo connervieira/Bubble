@@ -108,6 +108,7 @@ if ($username != $admin_account) { // Check to make sure the current user is an 
                                     echo "</div>";
                                 }
                             } else if ($_POST["productid"] != null and $_POST["productid"] != "") { // If post data exists, then take the information submitted by the user and use it to add/modify a product in the database.
+                                // Set the submitted POST data to more easily manipulated variables.
                                 $productid = $_POST["productid"];
                                 $name = $_POST["name"];
                                 $price = $_POST["price"];
@@ -118,6 +119,31 @@ if ($username != $admin_account) { // Check to make sure the current user is an 
                                 $action = $_POST["action"];
                                 $enabled = $_POST["enabled"];
 
+
+                                // Attempt to validate the submitted data against some basic rules.
+                                if ($productid == "" or $productid == null) { // Make sure the user has entered some kind of product ID
+                                    echo "<p style='color:#ff9999'>Error: You haven't entered a product ID! A product ID is required to uniquely identify this product in the product database.</p>";
+                                    exit();
+                                }
+                                if ($name == "" or $name == null) { // Make sure the user has entered the name of this product
+                                    echo "<p style='color:#ff9999'>Error: You haven't entered a product name! A product name is what allows your customers identify this product.</p>";
+                                    exit();
+                                }
+                                if ($price == "" or $price == null) { // Make sure the user has entered the price of this product
+                                    echo "<p style='color:#ff9999'>Error: You haven't entered a price for this product! A price is required so that Bubble knows how much to charge customers for this product.</p>";
+                                    exit();
+                                }
+                                if ($description == "" or $description == null) { // Make sure the user has entered a description of this product
+                                    echo "<p style='color:#ff9999'>Error: You haven't entered a description for this product! A short description is required so that customers can get a quick understanding of what this product is.</p>";
+                                    exit();
+                                }
+                                if ($icon == "" or $icon == null) { // Make sure the user has defined an icon for this product
+                                    echo "<p style='color:#ff9999'>Error: You haven't defined an icon for this product! An icon is required so that this product can be shown on the store page.</p>";
+                                    exit();
+                                }
+
+
+                                // Change the product database using the submitted information.
                                 $productArray[$store_id][$productid]["name"] = $name;
                                 $productArray[$store_id][$productid]["price"] = $price;
                                 $productArray[$store_id][$productid]["description"] = $description;
@@ -132,7 +158,8 @@ if ($username != $admin_account) { // Check to make sure the current user is an 
                                     $productArray[$store_id][$productid]["enabled"] = false;
                                 }
 
-                                file_put_contents('./productsdatabase.txt', serialize($productArray)); // Write array changes to disk
+                                // Write the array changes to disk.
+                                file_put_contents('./productsdatabase.txt', serialize($productArray));
                                 echo "<div style='text-align:center;width:100%;'>";
                                 echo "<p style='color:white;'>Successfully updated '" . $productid . "'!</p>";
                                 echo '<br><a class="btn btn-light" role="button" href="editproducts.php" style="margin:8px;padding:9px;background-color:#888888;border-color:#333333;border-radius:10px;">Back</a>';
