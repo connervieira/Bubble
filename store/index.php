@@ -42,8 +42,8 @@ $selected = 0; // Placeholder variable used to keep track of what color we are c
 
                     // Only show the admin control panel buttons if the current user is an admin user according to the current Bubble configuration.
                     if ($username == $admin_account) {
-                        echo '<a class="btn btn-light" role="button" href="editproducts.php" style="margin:8px;padding:9px;background-color:#888888;border-color:#333333;border-radius:10px;">Edit Products</a>';
-                        echo '<a class="btn btn-light" role="button" href="configure.php" style="margin:8px;padding:9px;background-color:#888888;border-color:#333333;border-radius:10px;">Configuration</a>';
+                        echo '<a class="btn btn-light" role="button" href="editproducts.php" style="margin:8px;padding:9px;background-color:#222222;border-color:#333333;border-radius:10px;color:white;">Edit Products</a>';
+                        echo '<a class="btn btn-light" role="button" href="configure.php" style="margin:8px;padding:9px;background-color:#222222;border-color:#333333;border-radius:10px;color:white;">Configuration</a>';
                     }
                     ?>
 				    <div class="intro">
