@@ -67,6 +67,8 @@ if ($username != $admin_account) { // Check to make sure the current user is an 
                                         Icon Alt Text: <input type='text' name='alt'><br>
                                         Action Information: <input type='text' name='action'><br>
                                         Enabled: <input type='checkbox' name='enabled' checked><br>
+                                        Subscription: <input type='checkbox' name='subscription'><br>
+                                        Subscription Term: <input type='number' name='subscriptionterm'><br>
                                         <input type='submit' value='Create New Product'>
                                     </form>
                                     <br><hr><br>
@@ -101,6 +103,12 @@ if ($username != $admin_account) { // Check to make sure the current user is an 
                                     } else {
                                         echo "Enabled: <input type='checkbox' name='enabled'><br>";
                                     }
+                                    if ($element['subscription'] == true) {
+                                        echo "Subscription: <input type='checkbox' name='subscription' checked><br>";
+                                    } else {
+                                        echo "Subscription: <input type='checkbox' name='subscription'><br>";
+                                    }
+                                    echo "Subscription Term: <input type='number' name='subscriptionterm' value='" . $element['subscriptionterm'] . "'><br>";
                                     echo "<br><br><input class='btn btn-light' role='button' type='submit' value='Update Product'>";
                                     echo '<br><a class="btn btn-light" role="button" href="editproducts.php?producttodelete=' . $key  . '"style="margin:8px;padding:9px;background-color:#ffaaaa;border-color:#333333;border-radius:10px;">Delete Product</a>';
                                     echo "</form>";
@@ -118,6 +126,8 @@ if ($username != $admin_account) { // Check to make sure the current user is an 
                                 $alt = $_POST["alt"];
                                 $action = $_POST["action"];
                                 $enabled = $_POST["enabled"];
+                                $subscription = $_POST["subscription"];
+                                $subscriptionterm = $_POST["subscriptionterm"];
 
 
                                 // Attempt to validate the submitted data against some basic rules.
@@ -141,6 +151,12 @@ if ($username != $admin_account) { // Check to make sure the current user is an 
                                     echo "<p style='color:#ff9999'>Error: You haven't defined an icon for this product! An icon is required so that this product can be shown on the store page.</p>";
                                     exit();
                                 }
+                                if ($subscription == "on") { // If subscription mode is turned on for this product, then make sure a subscription term has been entered as well
+                                    if ($subscriptionterm <= 0 or $subscriptionterm == null or $subscriptionterm == "") {
+                                        echo "<p style='color:#ff9999'>Error: You've marked this product as a subscription based product, but you haven't entered a valid subscription term.</p>";
+                                        exit();
+                                    }
+                                }
 
 
                                 // Change the product database using the submitted information.
@@ -151,11 +167,17 @@ if ($username != $admin_account) { // Check to make sure the current user is an 
                                 $productArray[$store_id][$productid]["icon"] = $icon;
                                 $productArray[$store_id][$productid]["alt"] = $alt;
                                 $productArray[$store_id][$productid]["action"] = $action;
+                                $productArray[$store_id][$productid]["subscriptionterm"] = $subscriptionterm;
 
                                 if ($enabled == "on") {
                                     $productArray[$store_id][$productid]["enabled"] = true;
                                 } else {
                                     $productArray[$store_id][$productid]["enabled"] = false;
+                                }
+                                if ($subscription == "on") {
+                                    $productArray[$store_id][$productid]["subscription"] = true;
+                                } else {
+                                    $productArray[$store_id][$productid]["subscription"] = false;
                                 }
 
                                 // Write the array changes to disk.

@@ -4,7 +4,7 @@ This document contains everything you need to know to get Bubble up and running.
 
 ## Quick Setup
 
-*Warning: This method of setup isn't tested, and is likely to not work. It is highly recommended that you complete the full setup explained in the 'Typical Installation and Setup' section*
+*Warning: This method of setup isn't tested, and is likely to not work. It is highly recommended that you complete the full setup explained in the 'Typical Installation and Setup' section.*
 
 1. To quickly set up Bubble, copy Bubble's root directory into your Download's folder, such that it can be accessed at `~/Downloads/bubble`.
 2. Next, run this command. You may need to enter your root password several times.
@@ -61,3 +61,8 @@ A good first step in testing would be to load <http://localhost/bubble/store/fai
 Bubble should now be fully functional. However, it's highly suggested that you test everything from start to finish to make sure that it all works how you are expecting it to. To do this, you may want to temporarily modify one of your products to make it extremely inexpensive (A few cents or so). Then, run through the system from start to finish to see if you successfully get your product.
 
 Provided that everything works as expected, you can revert the price back to normal, and proceed with the setup!
+
+
+## Help
+
+If you need help setting up Bubble, be sure to get in touch using the information found at <https://v0lttech.com/contact.php>. I'd be happy to give you a hand. For more in-depth technical assistance, I offered paid support, which you can learn more about at <https://v0lttech.com/bubblepro.php>
