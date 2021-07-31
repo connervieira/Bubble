@@ -118,19 +118,36 @@ $selected = 0; // Placeholder variable used to keep track of what color we are c
 
 
                                     // Check if the user has purchased this product, then adjust the Download and Purchase buttons accordingly.
-                                    if ($storeArray[$username][$store_id][$key]["purchased"] == true) {
-	    			                    echo '<a class="btn btn-primary" role="button" href="#" style="background-color:#222222;border-color:#777777;color:#777777;">Purchase</a>'; // The user has already purchased this product, so disable and gray out the 'Purchase' button.
-                                        echo '<br><br>';
-    		    		                echo '<a class="btn btn-primary" role="button" href="receipt.php?product=' . $key . '" style="background-color:#444444;border-color:#eeeeee">Receipt</a>'; // The user has already purchased this product, so enable the 'Receipt' button.
-                                        echo '<br><br>';
-    		    		                echo '<a class="btn btn-primary" role="button" href="download.php?product=' . $key . '" style="background-color:#444444;border-color:#eeeeee">Download</a>'; // The user has already purchased this product, so enable the 'Download' button.
+                                    if ($element["subscription"] == true) { // Determine whether or not this product is a subscription based product, and adjust the buttons accordingly.
+                                        if ($storeArray[$username][$store_id][$key]["expiration"] >= time()) { // The user is actively subscribed to this product.
+                                            echo '<a class="btn btn-primary" role="button" href="#" style="background-color:#222222;border-color:#777777;color:#777777;">Renew</a>'; // The user has already purchased this product, so disable and gray out the 'Purchase' button.
+                                            echo '<br><br>';
+                                            echo '<a class="btn btn-primary" role="button" href="receipt.php?product=' . $key . '" style="background-color:#444444;border-color:#eeeeee">Receipt</a>'; // The user has already purchased this product, so enable the 'Receipt' button.
+                                            echo '<br><br>';
+                                            echo '<a class="btn btn-primary" role="button" href="download.php?product=' . $key . '" style="background-color:#444444;border-color:#eeeeee">Access</a>'; // The user has already purchased this product, so enable the 'Download' button.
+                                        } else { // The user is not actively subsbscribed to this product.
+                                            echo '<a class="btn btn-primary" role="button" href="purchase.php?product=' . $key . '" style="background-color:#444444;border-color:#eeeeee">Subscribe</a>'; // The user has not yet purchased this product, so enable the 'Purchase' button,
+                                            echo '<br><br>';
+                                            echo '<a class="btn btn-primary" role="button" href="#" style="background-color:#222222;border-color:#777777;color:#777777;">Receipt</a>'; // The user has not purchased this product, so disable and gray out the 'Receipt' button.
+                                            echo '<br><br>';
+                                            echo '<a class="btn btn-primary" role="button" href="#" style="background-color:#222222;border-color:#777777;color:#777777;">Access</a>'; // The user has not yet purchsaed this product, so disable and gray out the 'Download' button
+                                            echo '<p class="description" style="font-size:15px;margin-top:0px;color:#999999;">Not purchased</p>';
+                                        }
                                     } else {
-				                        echo '<a class="btn btn-primary" role="button" href="purchase.php?product=' . $key . '" style="background-color:#444444;border-color:#eeeeee">Purchase</a>'; // The user has not yet purchased this product, so enable the 'Purchase' button,
-                                        echo '<br><br>';
-    		    		                echo '<a class="btn btn-primary" role="button" href="#" style="background-color:#222222;border-color:#777777;color:#777777;">Receipt</a>'; // The user has not purchased this product, so disable and gray out the 'Receipt' button.
-                                        echo '<br><br>';
-	    			                    echo '<a class="btn btn-primary" role="button" href="#" style="background-color:#222222;border-color:#777777;color:#777777;">Download</a>'; // The user has not yet purchsaed this product, so disable and gray out the 'Download' button
-                                        echo '<p class="description" style="font-size:15px;margin-top:0px;color:#999999;">Not purchased</p>';
+                                        if ($storeArray[$username][$store_id][$key]["purchased"] == true) {
+                                            echo '<a class="btn btn-primary" role="button" href="#" style="background-color:#222222;border-color:#777777;color:#777777;">Purchase</a>'; // The user has already purchased this product, so disable and gray out the 'Purchase' button.
+                                            echo '<br><br>';
+                                            echo '<a class="btn btn-primary" role="button" href="receipt.php?product=' . $key . '" style="background-color:#444444;border-color:#eeeeee">Receipt</a>'; // The user has already purchased this product, so enable the 'Receipt' button.
+                                            echo '<br><br>';
+                                            echo '<a class="btn btn-primary" role="button" href="download.php?product=' . $key . '" style="background-color:#444444;border-color:#eeeeee">Download</a>'; // The user has already purchased this product, so enable the 'Download' button.
+                                        } else {
+                                            echo '<a class="btn btn-primary" role="button" href="purchase.php?product=' . $key . '" style="background-color:#444444;border-color:#eeeeee">Purchase</a>'; // The user has not yet purchased this product, so enable the 'Purchase' button,
+                                            echo '<br><br>';
+                                            echo '<a class="btn btn-primary" role="button" href="#" style="background-color:#222222;border-color:#777777;color:#777777;">Receipt</a>'; // The user has not purchased this product, so disable and gray out the 'Receipt' button.
+                                            echo '<br><br>';
+                                            echo '<a class="btn btn-primary" role="button" href="#" style="background-color:#222222;border-color:#777777;color:#777777;">Download</a>'; // The user has not yet purchsaed this product, so disable and gray out the 'Download' button
+                                            echo '<p class="description" style="font-size:15px;margin-top:0px;color:#999999;">Not purchased</p>';
+                                        }
                                     }
     
 	    	    		            echo '<p class="description" style="padding-bottom:30px;color:#ffffff;">' . $element["description"] . '</p>'; // Display this product's description.
