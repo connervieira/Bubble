@@ -67,6 +67,7 @@ if ($username != $admin_account) { // Check to make sure the current user is an 
                                         Icon Alt Text: <input type='text' name='alt'><br>
                                         Action Information: <input type='text' name='action'><br>
                                         Enabled: <input type='checkbox' name='enabled' checked><br>
+                                        In Person Product: <input type='checkbox' name='inperson'><br>
                                         Subscription: <input type='checkbox' name='subscription'><br>
                                         Subscription Term: <input type='number' name='subscriptionterm'><br>
                                         <input type='submit' value='Create New Product'>
@@ -103,6 +104,11 @@ if ($username != $admin_account) { // Check to make sure the current user is an 
                                     } else {
                                         echo "Enabled: <input type='checkbox' name='enabled'><br>";
                                     }
+                                    if ($element['inperson'] == true) {
+                                        echo "In Person Product: <input type='checkbox' name='inperson' checked><br>";
+                                    } else {
+                                        echo "In Person Product: <input type='checkbox' name='inperson'><br>";
+                                    }
                                     if ($element['subscription'] == true) {
                                         echo "Subscription: <input type='checkbox' name='subscription' checked><br>";
                                     } else {
@@ -126,6 +132,7 @@ if ($username != $admin_account) { // Check to make sure the current user is an 
                                 $alt = $_POST["alt"];
                                 $action = $_POST["action"];
                                 $enabled = $_POST["enabled"];
+                                $inperson = $_POST["inperson"];
                                 $subscription = $_POST["subscription"];
                                 $subscriptionterm = $_POST["subscriptionterm"];
 
@@ -173,6 +180,11 @@ if ($username != $admin_account) { // Check to make sure the current user is an 
                                     $productArray[$store_id][$productid]["enabled"] = true;
                                 } else {
                                     $productArray[$store_id][$productid]["enabled"] = false;
+                                }
+                                if ($inperson == "on") {
+                                    $productArray[$store_id][$productid]["inperson"] = true;
+                                } else {
+                                    $productArray[$store_id][$productid]["inperson"] = false;
                                 }
                                 if ($subscription == "on") {
                                     $productArray[$store_id][$productid]["subscription"] = true;

@@ -25,6 +25,8 @@ Product settings are the settings defined in each product's information. This is
     - This is a deliberately open ended variable, and is intended to be used by developers working on the 'bubble/store/download.php' page. Really anything you want can be stored in this variable. For example, you may use this variable to store the download URL of the product, or maybe a private key used to generate license keys. This variable isn't really required, but it may come in useful if you'd like to keep your 'bubble/store/download.php' file organized.
 - Enabled
     - This value determines whether or not the product will appear on the Store page. If you'd like to temporarily disable a product on the Store page, set this to false. Please note that this does not prevent users from purchasing this product outright. It only stops it from appearing on the store page. If a user knows the product ID an manually enters it in the Purchase page URL, they can still purchase a disabled product.
+- In Person Product
+    - This checkbox is used to indicate if a product that someone would purchase in person. When this setting is enabled, the product will not show up in the online store, and instead will be visible in the point-of-sale interface of Bubble.
 - Subscription
     - This value determines whether this product is subscription based. This should be used for products that are only functional for a limited period of time after purchase before they need to be renewed. In it's current state, this doesn't do anything, and is simply a placeholder for future features planned for Bubble.
 - Subscription Term

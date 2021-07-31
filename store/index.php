@@ -92,7 +92,7 @@ $selected = 0; // Placeholder variable used to keep track of what color we are c
 
                             // Display all products based on information from the product database.
 	                        foreach ($productsArray[$store_id] as $key => $element) {
-                                if ($element["enabled"] == true) { // Only display this product if it is enabled in the product database.
+                                if ($element["enabled"] == true and $element["inperson"] !== true) { // Only display this product if it is enabled in the product database and is not marked as an in-person product.
     			    			    echo '<div class="col-sm-6 col-lg-4 item" style="background-color:';
 	    			    		    echo $product_tile_colors[$selected]; $selected++; if ($selected >= count($product_tile_colors)) { $selected = 0; } 
 		    			    	    echo ';margin:0;border-radius:';
