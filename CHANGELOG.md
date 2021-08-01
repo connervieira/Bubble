@@ -44,5 +44,11 @@
     - Added the ability to create new products with a web based GUI.
     - Added the ability to delete existing products with a web based GUI.
 - Replaced the Bubble configuration system with a file based system that allows for better extensibility.
-    - Create a web based GUI to edit configuration information.
-    - Removed the "Panic Button" setting
+    - Created a web based GUI to edit configuration information.
+    - Removed the "Panic Button" setting from the GUI.
+- Added some additional configuration values to products
+    - Subscription: A true/false value that determines whether or not a product will be treated as a subscription, where users have to renew with additional payments to maintain access to the product.
+    - Subscription Term: A value that determines how many days a subscription terms. In other words, the subscription term is how many days will pass before the customer will need to renew the product.
+    - In Person: This value determines whether or not a product is a product that will be sold in person using the new point-of-sale console built into Bubble. When this value is true, the product will not show up in the online store front in Bubble, and will only be accessible during in-person purchases to cashiers operating the point-of-sale console.
+- Added a 'Point Of Sale' mode to Bubble that allows for the sale of items in person.
+    - Added an interface that allows an admin to create, edit, and manage orders on a basic level.

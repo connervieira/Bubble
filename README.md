@@ -27,7 +27,7 @@ Bubble and all of it's dependencies are completely open source, allowing you to 
 
 ### Self Hosted
 
-Bubble doesn't require you use any third party services. Everything you need to automatically accept payments is hosted on your own server!
+Bubble doesn't require you use any third party services. Everything you need to automatically accept payments is hosted on your own server! The only time Bubble connects to external servers is to access information on the blockchain.
 
 ### Private
 

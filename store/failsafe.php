@@ -12,7 +12,7 @@ if (strlen($xPub) <= 10) {
     exit();
 }
 
-if (!is_writable("./storedatabase.txt")) {
+if (!is_writable("./storedatabase.txt") and !is_writable("../storedatabase.txt") and !is_writable("../store/storedatabase.txt")) {
     echo "<p style='margin:15%;color:red;'>Error: The store database file (storedatabase.txt) is not writable to Apache/PHP! You may want to contact customer support to make the store owner aware of this issue: <a href='mailto:";
     echo $support_email;
     echo "'>";
@@ -20,7 +20,7 @@ if (!is_writable("./storedatabase.txt")) {
     echo "</a></p>";
 }
 
-if (!is_writable("./productsdatabase.txt")) {
+if (!is_writable("./productsdatabase.txt") and !is_writable("../productsdatabase.txt") and !is_writable("../store/productsdatabase.txt")) {
     echo "<p style='margin:15%;color:red;'>Error: The product database file (productdatabase.txt) is not writable to Apache/PHP! You may want to contact customer support to make the store owner aware of this issue: <a href='mailto:";
     echo $support_email;
     echo "'>";
@@ -28,7 +28,7 @@ if (!is_writable("./productsdatabase.txt")) {
     echo "</a></p>";
 }
 
-if (!is_writable("./configurationdatabase.txt")) {
+if (!is_writable("./configurationdatabase.txt") and !is_writable("../configurationdatabase.txt") and !is_writable("../store/configurationdatabase.txt")) {
     echo "<p style='margin:15%;color:red;'>Error: The configuration database file (configurationdatabase.txt) is not writable to Apache/PHP! You may want to contact customer support to make the store owner aware of this issue: <a href='mailto:";
     echo $support_email;
     echo "'>";

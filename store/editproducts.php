@@ -60,7 +60,7 @@ if ($username != $admin_account) { // Check to make sure the current user is an 
                                     <form style='color:white;' method='POST'>
                                         Product ID: <input type='text' name='productid' required><br>
                                         Product Name: <input type='text' name='name' required><br>
-                                        Price (BCH): <input type='number' name='price' step='0.0001' required><br>
+                                        Price (BCH): <input type='number' name='price' step='0.000001' required><br>
                                         Description: <input type='text' name='description' required><br>
                                         Product Webpage: <input type='text' name='link'><br>
                                         Icon Link: <input type='text' name='icon' required><br>
@@ -93,7 +93,7 @@ if ($username != $admin_account) { // Check to make sure the current user is an 
                                     echo "<form style='color:white;' method='POST'>";
                                     echo "Product ID: <input type='text' name='productid' value='" . $key . "' style='color:gray;' readonly><br>";
                                     echo "Name: <input type='text' name='name' value='" . $element['name'] . "' required><br>";
-                                    echo "Price (BCH): <input type='number' name='price' step='0.0001' value='" . $element['price'] . "' required><br>";
+                                    echo "Price (BCH): <input type='number' name='price' step='0.000001' value='" . $element['price'] . "' required><br>";
                                     echo "Description: <input type='text' name='description' value='" . $element['description'] . "' required><br>";
                                     echo "Product Webpage: <input type='text' name='link' value='" . $element['link'] . "'><br>";
                                     echo "Icon Link: <input type='text' name='icon' value='" . $element['icon'] . "' required><br>";
