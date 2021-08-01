@@ -13,8 +13,18 @@ $store_id = "store1"; // This is the ID if your store. This is never seen by the
 
 
 
+// Locate the configuration database and load it from disk.
+if (file_exists('./configurationdatabase.txt')) {
+    $configurationArray = unserialize(file_get_contents('./configurationdatabase.txt'));
+} else if (file_exists('../configurationdatabase.txt')) {
+    $configurationArray = unserialize(file_get_contents('../configurationdatabase.txt'));
+} else if (file_exists('../store/configurationdatabase.txt')) {
+    $configurationArray = unserialize(file_get_contents('../store/configurationdatabase.txt'));
+} else {
+    echo "<p style='margin:15%;color:red;'>Error: The configuration database (bubble/store/configurationdatabase.txt) couldn't be located! This probably isn't a problem with your configuration, and is a bug with Bubble itself. You may want to contact V0LT over this issue: <a href='mailto:cvieira@v0lttech.com'>cvieira@v0lttech.com</a></p>";
+    exit();
+}
 
-$configurationArray = unserialize(file_get_contents('./configurationdatabase.txt')); // Load the configuration database from disk.
 
 // Functional settings
 $currency_conversion = $configurationArray[$store_id]["currency_conversion"]; // This setting determines whether or not clicking the price of a product in BCH will redirect to a DuckDuckGo page that converts the price in BCH to USD automatically.

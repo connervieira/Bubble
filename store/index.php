@@ -44,6 +44,7 @@ $selected = 0; // Placeholder variable used to keep track of what color we are c
                     if ($username == $admin_account) {
                         echo '<a class="btn btn-light" role="button" href="editproducts.php" style="margin:8px;padding:9px;background-color:#222222;border-color:#333333;border-radius:10px;color:white;">Edit Products</a>';
                         echo '<a class="btn btn-light" role="button" href="configure.php" style="margin:8px;padding:9px;background-color:#222222;border-color:#333333;border-radius:10px;color:white;">Configuration</a>';
+                        echo '<a class="btn btn-light" role="button" href="../pos/index.php" style="margin:8px;padding:9px;background-color:#222222;border-color:#333333;border-radius:10px;color:white;">Point-Of-Sale Console</a>';
                     }
                     ?>
 				    <div class="intro">
