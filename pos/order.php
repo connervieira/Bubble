@@ -36,7 +36,7 @@ $selected = 0; // Placeholder variable used to keep track of what color we are c
 				    <div class="intro">
 				        <h2 class="text-center" style="color:#dddddd">
                             <img src="/bubble/assets/img/bubblelogosmall.svg" alt="Bubble logo" style="height:50px;margin-right:20px;">
-                            Point-Of-Sale Console - Order
+                            Edit Order
                         </h2>
 				    </div>
 
@@ -54,8 +54,69 @@ $selected = 0; // Placeholder variable used to keep track of what color we are c
                                 exit(); // Stop loading the rest of the page.
                             }
 
-                            $order_number = $_POST["order_number"];
-                            $ordersArray[$store_id][$order_number]
+                            // Pull the variables from the URL data.
+                            $order_number = $_GET["order_number"];
+                            $product_id = $_GET["product_id"];
+                            $quantity = (int)$_GET["quantity"];
+
+                            $item_to_remove = $_GET["item_to_remove"]; // Get the product ID of the item the user would like to remove from the order, assuming it exists.
+
+
+                            if ($item_to_remove !== "" and $item_to_remove !== null) {
+                                unset($ordersArray[$store_id][$order_number][$item_to_remove]); // Remove the item from the order that the user has indicated.
+                                file_put_contents('./ordersdatabase.txt', serialize($ordersArray)); // Write array changes to disk
+                                header("Location: ./order.php?order_number=" . $order_number);
+                            } else if ($order_number == 0 or $order_number == null) { // If not order number is set, then automatically fill out the form with the next sequential order number.
+                                $order_number = count($ordersArray[$store_id]) + 1;
+
+                            } else { // If the order number is defined, then the user has almost certain just submitted a product to add to the current order. Therefore, we should validate and save variables from POST data.
+                                if ($quantity <= 0 or $quantity == null) { // Make sure the quantity variable exists and is set to an appropriate number.
+                                    echo "<p style='color:#ff8888;text-align:center;width:100%;'>Error: Please enter a valid quantity!</p>";
+                                } else {
+                                    if ($product_id == null or $product_id == "") { // Make sure the user has entered in a product ID. We will check to make sure that this product ID actually exists next.
+                                        echo "<p style='color:#ff8888;text-align:center;width:100%;'>Error: Please enter a Product ID!</p>";
+                                    } else {
+                                        if ($productsArray[$store_id][$product_id]["inperson"] !== true) { // Make sure the product ID entered actually exists, and that it is an "in person" product.
+                                            echo "<p style='color:#ff8888;text-align:center;width:100%;'>Error: Please make sure the Product ID that you've entered matches up with an product marked as 'in-person' in the product database!</p>";
+                                        } else { // All of the validation has checked out, so add the product to the current order.
+                                            $ordersArray[$store_id][$order_number][$product_id] = $ordersArray[$store_id][$order_number][$product_id] + $quantity;
+                                            file_put_contents('./ordersdatabase.txt', serialize($ordersArray)); // Write array changes to disk
+                                        }
+                                    }
+                                }
+                            }
+
+
+                            // Show the form to add products to this order.
+                            echo '
+                                <form style="text-align:center;color:white;width:100%;margin-bottom:50px;" method="GET">
+                                    Order Number: <input type="number" placeholder="Order Number" value="' . $order_number . '" name="order_number"><br>
+                                    Product ID: <input type="text" placeholder="Product ID" name="product_id"><br>
+                                    Quantity: <input type="number" placeholder="Quantity" value="1" name="quantity"><br>
+                                    <input type="submit" value="Add To Order"><br>
+                                </form>
+                                <hr>
+                            ';
+
+	                        foreach ($ordersArray[$store_id][$order_number] as $key => $element) {
+                                echo '<div class="col-sm-6 col-lg-4 item" style="color:white;background-color:';
+                                echo $product_tile_colors[$selected]; $selected++; if ($selected >= count($product_tile_colors)) { $selected = 0; } 
+                                echo ';margin:0;border-radius:';
+                                echo $product_tile_border_radius;
+                                echo 'px">';
+                                if ($element["alt"] == "") {
+                                    echo '<img class="img-fluid" style="max-height:250px;" style="max-height:250px;" src="' . $productsArray[$store_id][$key]["icon"] . '" alt="' . $productsArray[$store_id][$key]["name"] .' icon">'; // Display this product's icon with automatically generated alt text.
+                                } else {
+                                    echo '<img class="img-fluid" style="max-height:250px;" style="max-height:250px;" src="' . $productsArray[$store_id][$key]["icon"] . '" alt="' . $productsArray[$store_id][$key]["alt"] .'">'; // Display this product's icon with automatically generated alt text.
+                                }
+                                echo '<h3 class="name" style="color:#ffffff;">' . $productsArray[$store_id][$key]["name"] . '</h3>'; // Display this product's name
+                                echo "<p style='color:white;font-size:17px;'>Quantity: " . $element . "</p>";
+                                echo "<p style='color:white;font-size:20px;'>Subtotal: " . (float)$productsArray[$store_id][$key]["price"] * (int)$element . " BCH</p>";
+
+                                echo '<a class="btn btn-light" role="button" href="order.php?item_to_remove=' . $key . '&order_number=' . $order_number . '" style="margin:8px;padding:9px;background-color:#dd8888;border-color:#333333;border-radius:10px;">Remove</a>';
+
+                                echo "</div>";
+                            }
                             
 
                         ?>
