@@ -8,7 +8,7 @@ This document contains everything you need to know to get Bubble up and running.
 
 1. To quickly set up Bubble, copy Bubble's root directory into your Download's folder, such that it can be accessed at `~/Downloads/bubble`.
 2. Next, run this command. You may need to enter your root password several times.
-    - `sudo apt install apache2 php7.4 php7.4-gd; sudo a2enmod php7.4; mv ~/Downloads/bubble /var/www/html/; sudo chmod 777 /var/www/html/bubble/dropauth/ /var/www/html/bubble/store/storedatabase.txt /var/www/html/bubble/store/productsdatabase.txt /var/www/html/bubble/store/configurationdatabase.txt;`
+    - `sudo apt install apache2 php7.4 php-gd; sudo a2enmod php7.4; mv ~/Downloads/bubble /var/www/html/; sudo chmod 777 /var/www/html/bubble/dropauth/ /var/www/html/bubble/store/storedatabase.txt /var/www/html/bubble/store/productsdatabase.txt /var/www/html/bubble/store/configurationdatabase.txt; sudo apache2ctl restart`
 3. Finally, finish setting up Bubble using the GUI by starting at step 5 in the 'Configuration' section below
 
 ## Typical Installation and Setup
@@ -26,7 +26,7 @@ This installation process assumes you are using a Raspberry Pi or another Debian
 3. If the PHP Apache module doesn't automatically get enabled, enable it.
     - Example: `sudo a2enmod php7.4`
 4. Install modules required by Bubble's QR code library.
-    - Example: `sudo apt-get install php7.4-gd`
+    - Example: `sudo apt-get install php-gd`
 5. Restart Apache.
     - Example: `sudo apache2ctl restart`
 6. Copy or download Bubble to the root of your webserver.

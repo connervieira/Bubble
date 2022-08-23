@@ -87,8 +87,16 @@
 
         // Generate BitcoinCash address based on the user's transaction ID. This will cause the address to be the same for a given user and product combination even when the page is reloaded.
         $address = $cashp->getBlockchain()->createNewAddress($xPub, $paymentID);
-
         $plain_address = str_replace("bitcoincash:", "", $address->cashAddress);
+
+
+        if ($plain_address == "" or $plain_address == null) { // Check to see if the payment address loaded properly.
+            echo "<p style='margin:15%;color:red;'>Error: The payment address failed to load. This is likely a problem with the payment API. considering contacting the administrator of this instance to make them aware of the problem: <a href='mailto:";
+            echo $support_email;
+            echo "'>";
+            echo $support_email;
+            echo "</a></p>";
+        }
 
 
         // Display the main webpage content

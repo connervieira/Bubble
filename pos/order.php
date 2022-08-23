@@ -28,6 +28,18 @@ AbstractBlockchainApi::setLogger(function (string $subject, $error, $data = null
 $address = $cashp->getBlockchain()->createNewAddress($xPub, 0);
 $plain_address = str_replace("bitcoincash:", "", $address->cashAddress);
 
+if ($plain_address == "" or $plain_address == null) { // Check to see if the payment address loaded properly.
+    echo "<p style='margin:15%;color:red;'>Error: The payment address failed to load. This is likely a problem with the payment API. considering contacting the administrator of this instance to make them aware of the problem: <a href='mailto:";
+    echo $support_email;
+    echo "'>";
+    echo $support_email;
+    echo "</a></p>";
+
+}
+
+echo $address;
+echo $plain_address;
+
 
 $selected = 0; // Placeholder variable used to keep track of what color we are currently on while cycling through them on the product tiles.
 ?>
@@ -83,6 +95,11 @@ $selected = 0; // Placeholder variable used to keep track of what color we are c
                             $quantity = (int)$_GET["quantity"];
 
                             $item_to_remove = $_GET["item_to_remove"]; // Get the product ID of the item the user would like to remove from the order, assuming it exists.
+
+
+                            if ($ordersArray[$store_id] == null) { // Initialize the database if necessary.
+                                $ordersArray[$store_id] = array(); // Set the database to a blank array.
+                            }
 
 
                             if ($item_to_remove !== "" and $item_to_remove !== null) {
