@@ -11,6 +11,23 @@ function successful_purchase($productid, $action) { // This is the code that run
 function not_purchased() { // This is the code that runs when the user tries to download a product that they have not purchased.
     echo "<h1>Product has not yet been purchased!</h1>";
 }
+
+
+
+
+
+
+
+function download($file) { // This function will download a file without revealing it's URL. To use it, simply call download($file), replacing $file with an absolute file path to download.
+    header('Content-Description: File Transfer');
+    header('Content-Type: application/octet-stream');
+    header('Content-Disposition: attachment; filename='.basename($file));
+    header('Expires: 0');
+    header('Cache-Control: must-revalidate');
+    header('Pragma: public');
+    header('Content-Length: ' . filesize($file));
+    readfile($file);
+}
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +65,8 @@ function not_purchased() { // This is the code that runs when the user tries to 
         }
 
         if ($username == "" || $username == null) { // Redirect the user to the login page if they are not signed in.
-            header("Location " . $login_page);
+            header("Location " . $login_page); // Redirect the user to the login page.
+            exit(); // Terminate the script.
         }
 
         $productToDownload = $_GET["product"]; // Get the product the user is trying to access from the URL.

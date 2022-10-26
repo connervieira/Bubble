@@ -52,3 +52,4 @@
     - In Person: This value determines whether or not a product is a product that will be sold in person using the new point-of-sale console built into Bubble. When this value is true, the product will not show up in the online store front in Bubble, and will only be accessible during in-person purchases to cashiers operating the point-of-sale console.
 - Added a 'Point Of Sale' mode to Bubble that allows for the sale of items in person.
     - Added an interface that allows an admin to create, edit, and manage orders on a basic level.
+- Added a built in download function to the download page.

@@ -7,5 +7,4 @@ This is a to-do list of features I'd like to add to Bubble.
 - [X] A system to return recipts to users after making purchases.
 - [X] Add input validation on the Configuration page.
 - [X] Add support for physical, in person products (point of sale payment processing)
-- [ ] Add support for subscriptions
-- [ ] Add support for Monero payments
+- [ ] Add support for subscriptions.
